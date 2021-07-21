@@ -24,6 +24,11 @@ class Image
      */
     private $cheminAcces;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Annonce::class, inversedBy="images")
+     */
+    private $annonce;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -37,6 +42,18 @@ class Image
     public function setCheminAcces(?string $cheminAcces): self
     {
         $this->cheminAcces = $cheminAcces;
+
+        return $this;
+    }
+
+    public function getAnnonce(): ?Annonce
+    {
+        return $this->annonce;
+    }
+
+    public function setAnnonce(?Annonce $annonce): self
+    {
+        $this->annonce = $annonce;
 
         return $this;
     }

@@ -24,6 +24,12 @@ class Modele
      */
     private $libelle;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Marque::class, inversedBy="modeles")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $marque;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -37,6 +43,18 @@ class Modele
     public function setLibelle(string $libelle): self
     {
         $this->libelle = $libelle;
+
+        return $this;
+    }
+
+    public function getMarque(): ?Marque
+    {
+        return $this->marque;
+    }
+
+    public function setMarque(?Marque $marque): self
+    {
+        $this->marque = $marque;
 
         return $this;
     }
