@@ -36,6 +36,11 @@ class Garage
      */
     private $annonces;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="garages")
+     */
+    private $user;
+
     public function __construct()
     {
         $this->annonces = new ArrayCollection();
@@ -96,6 +101,18 @@ class Garage
                 $annonce->setGarage(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
