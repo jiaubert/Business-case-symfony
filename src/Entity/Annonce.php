@@ -7,6 +7,7 @@ use App\Repository\AnnonceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource()
@@ -23,6 +24,9 @@ class Annonce
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotNull (
+     *     message="Votre champ ne peut pas être nul"
+     * )
      */
     private $referenceAnnonce;
 
@@ -60,7 +64,7 @@ class Annonce
     private $garage;
 
     /**
-     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="annonce")
+     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="annonce", cascade={"remove"})
      */
     private $images;
 

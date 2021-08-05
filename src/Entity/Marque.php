@@ -27,7 +27,7 @@ class Marque
     private $libelle;
 
     /**
-     * @ORM\OneToMany(targetEntity=Modele::class, mappedBy="marque")
+     * @ORM\OneToMany(targetEntity=Modele::class, mappedBy="marque", cascade={"remove"})
      */
     private $modeles;
 

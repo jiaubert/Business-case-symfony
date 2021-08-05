@@ -7,7 +7,9 @@ use App\Repository\ModeleRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *
+ * )
  * @ORM\Entity(repositoryClass=ModeleRepository::class)
  */
 class Modele

@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -79,7 +78,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $adresse;
 
     /**
-     * @ORM\OneToMany(targetEntity=Garage::class, mappedBy="user")
+     * @ORM\OneToMany(targetEntity=Garage::class, mappedBy="user", cascade={"remove"})
      */
     private $garages;
 

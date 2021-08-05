@@ -32,7 +32,7 @@ class Garage
     private $telephone;
 
     /**
-     * @ORM\OneToMany(targetEntity=Annonce::class, mappedBy="garage")
+     * @ORM\OneToMany(targetEntity=Annonce::class, mappedBy="garage", cascade={"remove"})
      */
     private $annonces;
 

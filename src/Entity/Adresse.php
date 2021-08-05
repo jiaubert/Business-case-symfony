@@ -7,9 +7,23 @@ use App\Repository\AdresseRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     attributes={
+ *          "security"="is_granted('ROLE_USER')"
+ *     },
+ *     collectionOperations={
+ *          "get"={
+ *              "security"="is_granted('ROLE_USER')"
+ *          },
+ *          "post"={
+ *              "security"="is_granted('ROLE_USER')"
+ *          }
+ *     }
+ * )
  * @ORM\Entity(repositoryClass=AdresseRepository::class)
  */
 class Adresse
@@ -23,6 +37,9 @@ class Adresse
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotNull(
+     *     message="Votre champ ne peut pas être vide"
+     * )
      */
     private $ligne1;
 
@@ -38,11 +55,17 @@ class Adresse
 
     /**
      * @ORM\Column(type="string", length=5)
+     * @Assert\NotNull(
+     *     message="Votre champ ne peut pas être vide"
+     * )
      */
     private $codePostal;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotNull (
+     *     message="Votre champ ne peut pas être vide"
+     * )
      */
     private $ville;
 
